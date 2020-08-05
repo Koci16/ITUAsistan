@@ -1,4 +1,4 @@
-class Course:
+class Course(object):
     def __init__(self,
                  crn:int,
                  code:str,
@@ -29,9 +29,13 @@ class Course:
         self.restriction=restriction.split(", ")
         self.prereq=prereq
         self.classrest=classrest
+        self.selected=0
+        self.color=[]
+        self.cells=[]
 
     def __str__(self):
         return str((self.crn,self.code,self.title,self.instructor,self.building,self.day,self.time,self.room,self.capacity,self.enrolled,self.reservation,self.restriction,self.prereq,self.classrest))
+
 
 #fiz1=Course('30149', 'FIZ 102E', 'Physics II', 'Yakup  Hundur', '---- ', 'Pazartesi Salı Çarşamba ', '1500/1729 1500/1729 1500/1729 ', '---- ', '150', '87', 'Yok/None', 'BIO, BIOE, BLG, BLGE, CEV, CEVE, CHZ, CHZE, DEN, DENE, DUI, DUIE, EHB, EHBE, ELK, ELKE, END, ENDE, FIZ, FIZM, GEM, GEME, GEMK, GEO, GEOE, GID, GIDE, GMI, GMIE, IML, IMLE, INS, INSE, ISL, ISLE, JDF, JEF, JEFE, JEO, JEOE, KIM, KIME, KMM, KMME, KOM, KOME, MAD, MADE, MAK, MAKE, MAKM, MAT, MATE, MET, METE, MTO, MTOE, PET, PETE, TEK, TEKE, UCK, UCKE, UCKM, UZB, UZBE, UZBM', 'Yok/None', 'Yok/None')
 #print(fiz1)

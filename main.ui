@@ -6,22 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1122</width>
-    <height>834</height>
+    <width>1150</width>
+    <height>988</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1150</width>
+    <height>988</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1184</width>
+    <height>988</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>İTÜ Asistan</string>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>360</y>
+      <width>411</width>
+      <height>572</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>401</width>
+      <height>572</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1000</width>
+      <height>572</height>
+     </size>
+    </property>
+    <property name="title">
+     <string>Asistan</string>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="otomatik">
+       <property name="text">
+        <string>Otomatik</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QComboBox" name="alternatifler"/>
+     </item>
+    </layout>
+   </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>350</y>
-      <width>801</width>
-      <height>192</height>
+      <x>0</x>
+      <y>360</y>
+      <width>725</width>
+      <height>572</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>725</width>
+      <height>572</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>725</width>
+      <height>572</height>
+     </size>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
     <property name="rowCount">
      <number>20</number>
@@ -29,31 +108,756 @@
     <property name="columnCount">
      <number>5</number>
     </property>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
-    <column/>
+    <attribute name="verticalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>27</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>8:30-8:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>9:00-9:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>9:30-9:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>10:00-10:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>10:30-10:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>11:00-11:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>11:30-11:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>12:00-12:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>12:30-12:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>13:00-13:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>13:30-13:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>14:00-14:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>14:30-14:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>15:00-15:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>15:30-15:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>16:00-16:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>16:30-16:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>17:00-17:29</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>17:30-17:59</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>18:00-18:29</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Pazartesi</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Salı</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Çarşamba</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Perşembe</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Cuma</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>1</y>
+      <width>1148</width>
+      <height>359</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1148</width>
+      <height>359</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1148</width>
+      <height>359</height>
+     </size>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1125</width>
+       <height>580</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="labeller">
+          <item>
+           <widget class="QLabel" name="renkLabel">
+            <property name="maximumSize">
+             <size>
+              <width>68</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Renk</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="bolumLabel">
+            <property name="text">
+             <string>Bölüm Kodu</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="dersKoduLabel">
+            <property name="text">
+             <string>Ders Kodu</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="acilanlarLabel">
+            <property name="text">
+             <string>Açılan Dersler</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders1">
+          <item>
+           <widget class="QPushButton" name="renk1">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu1"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu1"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders1"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders2">
+          <item>
+           <widget class="QPushButton" name="renk2">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu2"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu2"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders2"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders3">
+          <item>
+           <widget class="QPushButton" name="renk3">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu3"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu3"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders3"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders4">
+          <item>
+           <widget class="QPushButton" name="renk4">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu4"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu4"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders4"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders5">
+          <item>
+           <widget class="QPushButton" name="renk5">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu5"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu5"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders5"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders6">
+          <item>
+           <widget class="QPushButton" name="renk6">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu6"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu6"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders6"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders7">
+          <item>
+           <widget class="QPushButton" name="renk7">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu7"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu7"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders7"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders8">
+          <item>
+           <widget class="QPushButton" name="renk8">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu8"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu8"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders8"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders9">
+          <item>
+           <widget class="QPushButton" name="renk9">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu9"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu9"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders9"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders10">
+          <item>
+           <widget class="QPushButton" name="renk10">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu10"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu10"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders10"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders11">
+          <item>
+           <widget class="QPushButton" name="renk11">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu11"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu11"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders11"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders12">
+          <item>
+           <widget class="QPushButton" name="renk12">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu12"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu12"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders12"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders13">
+          <item>
+           <widget class="QPushButton" name="renk13">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu13"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu13"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders13"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders14">
+          <item>
+           <widget class="QPushButton" name="renk14">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu14"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu14"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders14"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ders15">
+          <item>
+           <widget class="QPushButton" name="renk15">
+            <property name="maximumSize">
+             <size>
+              <width>64</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="bolumkodu15"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="derskodu15"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="acilanders15"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -61,18 +865,46 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1122</width>
+     <width>1150</width>
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuNot_Hesapla">
+   <widget class="QMenu" name="menuProfil">
     <property name="title">
-     <string>Not Hesapla</string>
+     <string>Profilim</string>
     </property>
+    <addaction name="actionBilgilerim"/>
    </widget>
-   <addaction name="menuNot_Hesapla"/>
+   <widget class="QMenu" name="menuDersler">
+    <property name="title">
+     <string>Dersler</string>
+    </property>
+    <addaction name="actionDers_Plan"/>
+    <addaction name="actionNot_Hesapla"/>
+   </widget>
+   <addaction name="menuProfil"/>
+   <addaction name="menuDersler"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <action name="actionBilgilerim">
+   <property name="text">
+    <string>Bilgilerim</string>
+   </property>
+  </action>
+  <action name="actionDers_Plan">
+   <property name="text">
+    <string>Ders Planı</string>
+   </property>
+  </action>
+  <action name="actionNot_Hesapla">
+   <property name="text">
+    <string>Not Hesapla</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
