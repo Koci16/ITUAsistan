@@ -64,13 +64,6 @@ acilanders13_text=""
 acilanders14_text=""
 acilanders15_text=""
 
-# class Cell(object):
-#     def __init__(self,loc:tuple):
-#         self.loc=loc
-#         self.color=
-#
-#     def mark(self,color,course):
-#         self.color
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
