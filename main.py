@@ -12,6 +12,27 @@ from course_grabber import getCourseClasses,getCourseCodes
 from course import Course
 import random as r
 from itertools import product
+from profilim import Ui_Profilim
+from dersler import Ui_dersPlaniPencere
+
+def uprod(*seqs):
+    def inner(i):
+        if i == n:
+            yield tuple(result)
+            return
+        for elt in sets[i] - seen:
+            seen.add(elt)
+            result[i] = elt
+            for t in inner(i+1):
+                yield t
+            seen.remove(elt)
+
+    sets = [set(seq) for seq in seqs]
+    n = len(sets)
+    seen = set()
+    result = [None] * n
+    for t in inner(0):
+        yield t
 
 bolumkodlari=[""]
 bolumkodlari+=getCourseCodes()
@@ -602,8 +623,22 @@ class Ui_MainWindow(object):
         self.otomatik.clicked.connect(self.otomatikOlustur)
         self.alternatifler.currentIndexChanged.connect(self.alternatifDegisti)
 
+        self.Profilim = QtWidgets.QMainWindow()
+        self.profui = Ui_Profilim()
+        self.profui.setupUi(self.Profilim)
+        self.actionBilgilerim.triggered.connect(self.Profilim.show)
+
+        self.dersPlaniPencere = QtWidgets.QMainWindow()
+        self.planui = Ui_dersPlaniPencere()
+        self.planui.setupUi(self.dersPlaniPencere)
+        self.actionDers_Plan.triggered.connect(self.dersPlaniPencere.show)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    # def profilPenceresiniGoster(self,text):
+    #     profilim.Profilim.show()
+    #     pass
 
     def otomatikOlustur(self):
         global alternatiflistesi
@@ -613,13 +648,12 @@ class Ui_MainWindow(object):
         self.alternatifler.clear()
         kombinasyonualinacakdersler=[]
         secilikodunacilancb=[]
-        print("alternatifler cb temizlendi")
         for r in range(0, 20):
             for c in range(0, 5):
                 self.tableWidget.item(r, c).setText("")
                 self.tableWidget.item(r, c).setBackground(QtGui.QColor(255, 255, 255))
         secilidersler=[]
-
+        __silinecekalternatifler=[]
         if(self.cakismaVarmi()==True):
             self.statusbar.showMessage("Seçtiğin dersler çakışıyor birini bırak.")
         else:
@@ -631,8 +665,7 @@ class Ui_MainWindow(object):
                         if kod in cekilenbolumler:
                             for k in cekilenbolumler[kod]:
                                 if k.crn == __crn:
-                                    ders=k
-                                    kombinasyonualinacakdersler.append([ders])
+                                    kombinasyonualinacakdersler.append([k])
                 else:
 
                     if (index == 0):
@@ -809,20 +842,17 @@ class Ui_MainWindow(object):
                             for __birincindex,__birinciningun in enumerate(__alternatifders.day):
                                 for __ikincindex,__ikinciningun in enumerate(__ikincialternatif.day):
                                     if(__birinciningun==__ikinciningun):
-                                        print(__alternatifders.crn,__ikincialternatif.crn)
                                         __saat = __alternatifders.time[__birincindex].split("/")
                                         __ikincisaat = __ikincialternatif.time[__ikincindex].split("/")
                                         __baslangic = [__saat[0][:2], __saat[0][2:4]]
                                         __bitis = [__saat[1][:2], str(int(__saat[1][2:4]) + 1)]
                                         __cakisma=False
-                                        print("Saat ayarları yapıldı")
                                         if (__bitis[1] == "60"):
                                             __bitis[1] = "00"
                                             __bitis[0] = str(int(__bitis[0]) + 1)
                                             if (int(__bitis[0]) < 10):
                                                 __bitis[0] = "0" + __bitis[0]
                                         __imlec = __baslangic
-                                        print("İmleç atandı")
                                         while (__cakisma==False and (int(__bitis[0]) > int(__imlec[0]) or int(__bitis[1]) > int(__imlec[1]))):
                                             __cakismakontrolimleci=__imlec[0]+__imlec[1]
                                             if(int(__cakismakontrolimleci)>=int(__ikincisaat[0]) and int(__cakismakontrolimleci)<=int(__ikincisaat[1])):
@@ -835,34 +865,58 @@ class Ui_MainWindow(object):
                                                 __imlec[0] = str(int(__imlec[0]) + 1)
                                             if (int(__imlec[0]) < 10):
                                                 __imlec[0] = "0" + str(int(__imlec[0]))
-                                        print("Çakışma kontrolü")
-                                        print(__cakisma)
                                         if(__cakisma==True):
-                                            if(alternatiflistesi[__altindex]==__alternatif):
-                                                print("Çakışma var silinecek")
-                                                alternatiflistesi.pop(__altindex)
-                                                print("Çakışmalı silindi")
-
+                                            try:
+                                                # alternatiflistesi.pop(__altindex)
+                                                __silinecekalternatifler.append(__alternatif)
+                                            except Exception as e:
+                                                print("-"*15)
+                                                print(e.message,e.args)
+                                                print("-"*15)
+            for __silinecek in __silinecekalternatifler:
+                try:
+                    alternatiflistesi.remove(__silinecek)
+                    __silinecekalternatifler.remove(__silinecek)
+                except Exception as e:
+                    print("-" * 15)
+                    print(e)
+                    print("-" * 15)
             if(len(alternatiflistesi)>0):
                 self.alternatifler.addItems([""]+["{}. alternatif".format(i) for i in range(1,len(alternatiflistesi)+1)])
 
 
     def alternatifDegisti(self,index):
-        if(index!=0):
-            print("dersleri kaldırıyom")
-            print(secilidersler)
-            while(len(secilidersler)>0):
-                for __secili in secilidersler:
-                    self.derskaldir(__secili)
-            print(secilidersler)
-            print("dersleri yerleştiriyom")
-            print(*alternatiflistesi[index-1])
+        if(index!=0 and self.alternatifler.currentText()!=""):
+            # while(len(secilidersler)>0):
+            #     for __secili in secilidersler:
+            #         self.derskaldir(__secili)
+            for __acilanderscb in [self.acilanders1, self.acilanders2, self.acilanders3, self.acilanders4, self.acilanders5,
+                     self.acilanders6, self.acilanders7, self.acilanders8, self.acilanders9, self.acilanders10,
+                     self.acilanders11, self.acilanders12, self.acilanders13, self.acilanders14,
+                     self.acilanders15]:
+                    __acilanderscb.setCurrentIndex(0)
+
             for __altders in alternatiflistesi[index-1]:
-                print("yerleştirme başladı")
-                print(index-1, __altders)
-                self.dersyerlestir(__altders)
-                print("yerleştirme bitti")
-            print(secilidersler)
+                #self.dersyerlestir(__altders)
+                gun_saat = ""
+                for i in range(len(__altders.day)):
+                    if i != range(len(__altders.day))[-1]:
+                        gun_saat += "{}-{},".format(__altders.day[i], __altders.time[i])
+                    else:
+                        gun_saat += "{}-{}".format(__altders.day[i], __altders.time[i])
+                for index, __acilanderscb in enumerate(
+                        [self.acilanders1, self.acilanders2, self.acilanders3, self.acilanders4, self.acilanders5,
+                         self.acilanders6, self.acilanders7, self.acilanders8, self.acilanders9, self.acilanders10,
+                         self.acilanders11, self.acilanders12, self.acilanders13, self.acilanders14,
+                         self.acilanders15]):
+                    if(__acilanderscb.count()>0):
+                        __acilanderscbtext = [__acilanderscb.itemText(i) for i in range(__acilanderscb.count())]
+                        for __textindex,__text in enumerate(__acilanderscbtext):
+                            if(__text=="{} | {} | {} | {}".format(__altders.crn,__altders.title,__altders.instructor,gun_saat)):
+                                __acilanderscb.setCurrentIndex(__textindex)
+                                break
+
+
 
 
 
@@ -917,12 +971,10 @@ class Ui_MainWindow(object):
     def derskaldir(self,__ders):
         for __i, __eski in enumerate(secilidersler):
             if(__eski==__ders):
-                print("seçili derselrden kaldırıyorum")
                 secilidersler.pop(__i)
 
         for c in __ders.cells:
             for d in secilidersler:
-                print("c ve d",c,d)
                 if c in d.cells:
                     c.setBackground(QtGui.QColor(d.color[0],d.color[1],d.color[2]))
                     c.setText(d.code)
@@ -934,7 +986,6 @@ class Ui_MainWindow(object):
                     for c in range(0, 5):
                         self.tableWidget.item(r,c).setText("")
                         self.tableWidget.item(r,c).setBackground(QtGui.QColor(255,255,255))
-        print("Buraya kadar geldik")
         if(self.cakismaVarmi()==True):
             self.statusbar.showMessage("AGA DERSLER ÇAKIŞTI AGA")
         else:
@@ -955,7 +1006,7 @@ class Ui_MainWindow(object):
         global acilanders1_text
         if acilanders1_text!="":
             crn=acilanders1_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -974,7 +1025,7 @@ class Ui_MainWindow(object):
         global acilanders2_text
         if acilanders2_text!="":
             crn=acilanders2_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -992,7 +1043,7 @@ class Ui_MainWindow(object):
         global acilanders3_text
         if acilanders3_text!="":
             crn=acilanders3_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1010,7 +1061,7 @@ class Ui_MainWindow(object):
         global acilanders4_text
         if acilanders4_text!="":
             crn=acilanders4_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1028,7 +1079,7 @@ class Ui_MainWindow(object):
         global acilanders5_text
         if acilanders5_text!="":
             crn=acilanders5_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1046,7 +1097,7 @@ class Ui_MainWindow(object):
         global acilanders6_text
         if acilanders6_text!="":
             crn=acilanders6_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1064,7 +1115,7 @@ class Ui_MainWindow(object):
         global acilanders7_text
         if acilanders7_text!="":
             crn=acilanders7_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1082,7 +1133,7 @@ class Ui_MainWindow(object):
         global acilanders8_text
         if acilanders8_text!="":
             crn=acilanders8_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1100,7 +1151,7 @@ class Ui_MainWindow(object):
         global acilanders9_text
         if acilanders9_text!="":
             crn=acilanders9_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1118,7 +1169,7 @@ class Ui_MainWindow(object):
         global acilanders10_text
         if acilanders10_text!="":
             crn=acilanders10_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1136,7 +1187,7 @@ class Ui_MainWindow(object):
         global acilanders11_text
         if acilanders11_text!="":
             crn=acilanders11_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1154,7 +1205,7 @@ class Ui_MainWindow(object):
         global acilanders12_text
         if acilanders12_text!="":
             crn=acilanders12_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1172,7 +1223,7 @@ class Ui_MainWindow(object):
         global acilanders13_text
         if acilanders13_text!="":
             crn=acilanders13_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1190,7 +1241,7 @@ class Ui_MainWindow(object):
         global acilanders14_text
         if acilanders14_text!="":
             crn=acilanders14_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
@@ -1208,7 +1259,7 @@ class Ui_MainWindow(object):
         global acilanders15_text
         if acilanders15_text!="":
             crn=acilanders15_text.split(" | ")[0]
-            print(crn)
+            
             for kod in bolumkodlari:
                 if kod in cekilenbolumler:
                     for k in cekilenbolumler[kod]:
