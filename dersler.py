@@ -8,6 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from dersplani_islemleri import dersPlaniCek
+import  sqlite3 as sql
 
 
 class Ui_dersPlaniPencere(object):
@@ -64,6 +66,12 @@ class Ui_dersPlaniPencere(object):
         self.manualTablo.setHorizontalHeaderItem(4, item)
         self.tabWidget.addTab(self.manuelDersTab, "")
         dersPlaniPencere.setCentralWidget(self.centralwidget)
+        satirsirasi=0
+        for index,ders in enumerate(dersPlaniCek("http://www.sis.itu.edu.tr/tr/dersplan/plan/GMI/201810.html")):
+            self.dersPlaniTablo.insertRow(satirsirasi)
+            for kolonindex, kolon in enumerate([ders.kod,ders.ad,ders.kredi,ders.yariyil]):
+                self.dersPlaniTablo.setItem(satirsirasi,kolonindex,QtWidgets.QTableWidgetItem(str(kolon)))
+            satirsirasi+=1
 
         self.retranslateUi(dersPlaniPencere)
         self.tabWidget.setCurrentIndex(1)

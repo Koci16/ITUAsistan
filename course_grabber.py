@@ -5,6 +5,7 @@ from course import Course
 courseMainURL = "http://www.sis.itu.edu.tr/tr/ders_programlari/LSprogramlar/prg.php"
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
 
+
 def getCourseCodes():
     courseCodeList = []
     page = requests.get(courseMainURL,headers=headers)

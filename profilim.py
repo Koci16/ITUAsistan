@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_Profilim(object):
     def setupUi(self, Profilim):
         Profilim.setObjectName("Profilim")
